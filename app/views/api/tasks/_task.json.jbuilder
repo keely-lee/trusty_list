@@ -1,0 +1,1 @@
+json.extract! task, :list_id, :title, :status, :description, :comments
