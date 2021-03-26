@@ -8,8 +8,11 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+
 class List < ApplicationRecord
-  validates :user_id, :name, presence: true
+  validates :user_id, presence: true
+  validates :name, presence: true, uniqueness: true
+  after_initialize :name_case
 
   has_many :tasks,
   class_name: :Task,
@@ -18,4 +21,7 @@ class List < ApplicationRecord
   belongs_to :user,
   class_name: :User
 
+  def name_case
+    self.name = self.name.split(" ").map{ |word| word.upcase }.join(" ")
+  end
 end
