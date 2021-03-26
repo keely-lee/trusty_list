@@ -15,7 +15,7 @@ class List < ApplicationRecord
   class_name: :Task,
   dependent: :destroy
 
-  belongs_to :user
+  belongs_to :user,
   class_name: :User
 
 end

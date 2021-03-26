@@ -20,6 +20,10 @@ class User < ApplicationRecord
   class_name: :List,
   dependent: :destroy
 
+  has_many :tasks,
+  through: :lists,
+  source: :user
+
   def self.find_by_credentials(username, password)
     @user = User.find_by(email: username)
     return nil if @user.nil?

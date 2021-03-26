@@ -17,6 +17,13 @@ class Task < ApplicationRecord
   validates :status, inclusion: { in: ['I', 'D'] }, length: {maximum: 1}
   after_initialize :start_in_progress
 
+  belongs_to :list,
+  class_name: :List
+
+  has_one :user,
+  through: :list,
+  source: :user
+
   def start_in_progress
     self.status ||= 'I'
   end
