@@ -1,12 +1,17 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Session from './session';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
+
+import Greeting from './greeting';
+
 
 const App = () => {
   return (
     <div>
-      INSIDE APP.jsx
-      <Session/>
+      <Switch>
+        <Route exact path="/" component={Greeting} />
+        
+      </Switch>
     </div>
   )
 }

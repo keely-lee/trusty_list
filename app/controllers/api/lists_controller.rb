@@ -1,4 +1,4 @@
-class API::ListsController < ApplicationController
+class Api::ListsController < ApplicationController
   def index
     @lists = if params[:user_id]
                 List.where(params[:user_id])
