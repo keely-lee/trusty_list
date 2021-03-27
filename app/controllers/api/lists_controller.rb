@@ -10,9 +10,10 @@ class Api::ListsController < ApplicationController
       render json: {}
     end
   end
-
+  
   def show
-    @list = List.find(params[:id])
+    @list = List.find_by(list_params[:id])
+    byebug
     if @list
       render :show
     else
@@ -25,7 +26,8 @@ class Api::ListsController < ApplicationController
     # @list = List.new(list_params)
     # @list.user_id = current_user.id
     if @list.save 
-      redirect_to api_list_url
+      # redirect_to api_list_url(@list)
+      redirect_to "/api/lists/show"
     else
       render json: @list.errors.full_messages, status: 422
     end
