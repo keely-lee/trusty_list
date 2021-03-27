@@ -1,18 +1,14 @@
 class Api::ListsController < ApplicationController
   def index
-    @lists = if params[:user_id]
-                List.where(params[:user_id])
-              else
-                render json: {}
+    @lists = if current_user
+                List.where(user_id: current_user.id)
               end
 
-    #@lists = if params[:user_id]
-    #        List.where(user_id: params[:user_id])
-    #      else
-    #        List.all
-    #      end
-    
-    render :index
+    if @lists
+      render :index
+    else
+      render json: {}
+    end
   end
 
   def show
