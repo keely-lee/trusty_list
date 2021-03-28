@@ -25,10 +25,10 @@
 [class*="list-ele"] {
   border: 2px solid gray;
   border-radius: 4px;
-  width: 20%;
+  width: 13em;
   margin: 1em 1em;
   background-color: whitesmoke;
-  height: 10em;
+  height: 15em;
   overflow-y: scroll;
 }
 
@@ -39,9 +39,30 @@
 
 
 .list-ele-new {
-  opacity: .7;
+  opacity: .8;
 }
 
 .list-ele-new:hover {
   opacity: 1;
+}
+
+
+
+/* LISTS */
+.user-wrapper p {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+
+.user-wrapper li {
+  margin-top: .2em;
+  margin-bottom: .2em;
+  font-size: 1.1em;
+}
+
+.user-wrapper a {
+  text-decoration: none;
+  color: black;
 }

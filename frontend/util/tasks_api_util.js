@@ -14,7 +14,7 @@ export const showTask = taskId => {
 
 export const createTask = task => {
   return $.ajax({
-    metho: "POST",
+    method: "POST",
     url: "/api/tasks",
     data: { task }
   })

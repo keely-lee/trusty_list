@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getList, updateList, deleteList } from '../actions/list_actions';
 import { createTask, updateTask, clearTask } from '../actions/task_actions';
 
@@ -12,7 +13,7 @@ function List(props) {
   const dispatch = useDispatch();
   const { match } = props;
   const list = useSelector(state => state.entities.lists);
-  const listObj = Object.keys(list).length ? list[Object.keys(list)[0]] : null;
+  const listObj = Object.keys(list).length === 1 ? list[Object.keys(list)[0]] : null;
   const [listName, updateListName] = listObj ? useState(listObj.name) : useState("");
 
   useEffect(() => {
@@ -20,9 +21,12 @@ function List(props) {
       .then(res => updateListName(Object.values(res.list)[0].name))
   }, [])
 
-
-  console.log(match.params.id)
-  console.log("match.params.id")
+  // useEffect(() => {
+  //   effect
+  //   return () => {
+  //     cleanup
+  //   }
+  // }, [input])
 
   function saveList(e){
     e.preventDefault();
@@ -38,6 +42,8 @@ function List(props) {
 
   return (
     <div className="list-main">
+      <Link to="/">Return to Lists</Link>
+
       { listObj ? ( 
         <div>
           <form onSubmit={saveList}>

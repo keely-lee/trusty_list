@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { logout } from '../actions/session_actions';
-import { getLists, getList, createList, updateList, deleteList } from '../actions/list_actions';
+import { getLists, getList, updateList, deleteList } from '../actions/list_actions';
 import { openModal } from '../actions/modal_actions';
 
 function UserHome(){
@@ -11,7 +12,6 @@ function UserHome(){
   const [list, setList] = useState({});
 
   useEffect(() => {
-    console.log("on mount grab lists")
     dispatch(getLists())
   }, []);
 
@@ -36,17 +36,18 @@ function UserHome(){
       <div className="user-wrapper">
         { listIds.length ? listIds.map(id => {
           return (
-            <div className={`list-ele-${id}`} key={`list-${id}`}>
-              <p>{lists[id].name}</p>
-              <ul>
-                { lists[id].tasks.map((task, idx) => {
-                  return ( 
-                    <li key={idx}>{task.title}</li> 
-                  )
-                }) }
-              </ul>
-
-            </div>
+            <Link to={`/lists/${id}`} key={`list-${id}`}>
+              <div className={`list-ele-${id}`}>
+                <p>{lists[id].name}</p>
+                <ul>
+                  { lists[id].tasks.map((task, idx) => {
+                    return ( 
+                      <li key={idx}>{task.title}</li> 
+                    )
+                  }) }
+                </ul>
+              </div>
+            </Link>
           )
         }) : null }
 

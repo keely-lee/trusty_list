@@ -18,8 +18,8 @@ class Api::TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      @list = List.find(params[:list_id])
-      redirect_to api_list_url(@list)
+      @list = List.find(task_params[:list_id])
+      render "/api/lists/show"
     else
       render json: @task.errors.full_messages, status: 422
     end
@@ -31,7 +31,7 @@ class Api::TasksController < ApplicationController
     if @task.update(task_params)
       @list = List.find(list_id)
       # if @list ?? needed
-      redirect_to api_list_url(@list)
+      render "/api/lists/show"
     else
       render json: @task.errors.full_messages, status: 422
     end

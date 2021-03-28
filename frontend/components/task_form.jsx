@@ -1,38 +1,40 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createTask, updateTask, clearTask } from '../actions/task_actions';
-
+import { closeModal } from '../actions/modal_actions';
 
 function TaskForm({edit, listId}) { //need listID??
   const dispatch = useDispatch();
+  const list = useSelector(state => state.entities.lists);
+  // const errors = useSelector(state => state.errors.list);
+
   const [title, updateTitle] = edit ? useState(edit.title) : useState("");
   const [status, updateStatus] = edit ? useState(edit.status) : useState("I");
   const [description, updateDescription] = edit ? useState(edit.description) : useState("")
   const [comments, updateComments] = edit ? useState(edit.comments) : useState([]);
   // const [dueDate, updateDueDate] = useState(""); eventually get date calcs
 
-  console.log(listId)
-  console.log("listId in taskform")
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    debugger
+    const listNum = listId ? listId : Object.keys(list)[0];
+    // edit from list home vs new list modal. Prep for home page edit.
 
     const currTask = {
       title: title,
       status: status,
       description: description,
       comments: comments,
-      list_id: listId
+      list_id: listNum
     }
-
-    debugger
+    
     if (edit) {
-      currTask[id] = edit.id;
+      currTask['id'] = edit.id;
       dispatch(updateTask(currTask))
     } else {
       dispatch(createTask(currTask))
+        .then(() => dispatch(closeModal()))
     }
   }
 
@@ -56,6 +58,12 @@ function TaskForm({edit, listId}) { //need listID??
         { edit ? <button type="button" onClick={() => dispatch(clearTask(edit.id))}>Delete Task</button> : null }
         <button>Save!</button>
       </form>
+
+      {/* { errors.length ? errors.map((err, idx) => {
+        return (
+          <p className={`task-error-${idx}`} key={idx}>{err}</p>
+        )
+      }) : null } */}
     </div>
   )
 

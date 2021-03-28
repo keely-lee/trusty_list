@@ -7,7 +7,9 @@ import Modal from './modal';
 import List from './list_home';
 
 
-const App = () => {
+const App = (props) => {
+  // console.log(props)
+  // console.log("props in app")
   return (
     <div id="App">
       <Modal/>

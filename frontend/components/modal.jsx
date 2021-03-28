@@ -8,6 +8,7 @@ import { NewListModal } from './modal_components';
 function Modal({task}) {
   const dispatch = useDispatch();
   const modalState = useSelector(state => state.modal);
+  const listErrors = useSelector(state => state.errors.list);
 
   if (!modalState) return null;
 
@@ -26,6 +27,11 @@ function Modal({task}) {
   return (
     <div className="modal-background-main" onClick={() => dispatch(closeModal())}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
+        { listErrors.map((err, idx) => {
+          return (
+            <p className={`list-error-${idx}`} key={`err-${idx}`}>{err}</p>
+          )
+        }) }
         { component }
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
 import { createList } from '../actions/list_actions';
@@ -9,7 +9,6 @@ export const NewListModal = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const error = useSelector(state => state.errors.list);
   const [listName, updateListName] = useState("");
   
   function handleNewList(e) {
@@ -23,12 +22,6 @@ export const NewListModal = () => {
 
   return (
     <div className="new-list-modal-div">
-      { error.length ? error.map((err, idx) => {
-        return (
-          <p className={`list-error-${idx}`} key={`err-${idx}`}>{err}</p>
-        )
-      }) : null}
-      
       <form onSubmit={handleNewList}>
         <input type="text" 
         value={listName}
