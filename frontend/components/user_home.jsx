@@ -7,6 +7,7 @@ function UserHome(){
   const dispatch = useDispatch();
   const lists = useSelector(state => state.entities.lists);
   const listIds = Object.keys(lists);
+  const [list, setList] = useState({});
 
   useEffect(() => {
     console.log("on mount grab lists")
@@ -47,7 +48,7 @@ function UserHome(){
         )
       }) : null }
 
-      <div className="list-ele-new" onClick={() => dispatch(createList({name: "test eigh route"}))}>
+      <div className="list-ele-new" onClick={() => dispatch(createList({name: "test ten route"}))}>
         <p>New List</p>
       </div>
     </div>
