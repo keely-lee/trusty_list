@@ -32,9 +32,9 @@ class Api::ListsController < ApplicationController
   end
 
   def update
-    @list = List.find_by(params[:id])
+    @list = List.find(params[:id])
     if @list.update(list_params)
-      render api_list_url
+      render "/api/lists/show"
     else
       render json: @list.errors.full_messages, status: 422
     end

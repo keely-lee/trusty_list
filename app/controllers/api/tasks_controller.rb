@@ -41,7 +41,7 @@ class Api::TasksController < ApplicationController
     @task = Task.find(params[:id])
     if @task.destroy
       @list = List.find(@task.list_id)
-      redirect_to api_list_url(@list)
+      render "/api/lists/show"
     else
       render json: ['Task deleted!']
     end
