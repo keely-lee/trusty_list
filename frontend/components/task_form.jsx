@@ -58,12 +58,6 @@ function TaskForm({edit, listId}) { //need listID??
         { edit ? <button type="button" onClick={() => dispatch(clearTask(edit.id))}>Delete Task</button> : null }
         <button>Save!</button>
       </form>
-
-      {/* { errors.length ? errors.map((err, idx) => {
-        return (
-          <p className={`task-error-${idx}`} key={idx}>{err}</p>
-        )
-      }) : null } */}
     </div>
   )
 

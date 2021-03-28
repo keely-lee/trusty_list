@@ -1,5 +1,5 @@
 import * as TaskAPIUtil from '../util/tasks_api_util';
-import { receiveListErrors } from './list_actions';
+import { receiveListErrors, receiveList} from './list_actions';
 
 export const RECEIVE_TASKS = "RECEIVE_TASKS";
 export const RECEIVE_TASK = "RECEIVE_TASK";
@@ -39,16 +39,18 @@ export const getTask = taskId => dispatch => {
 
 export const createTask = task => dispatch => {
   return TaskAPIUtil.createTask(task)
-    .then(task => dispatch(receiveTask(task)))
+    .then(list => dispatch(receiveList(list)))
     .fail(err => dispatch(receiveListErrors(err.responseJSON)))
 }
 export const updateTask = task => dispatch => {
   return TaskAPIUtil.updateTask(task)
-    .then(task => dispatch(receiveTask(task)))
+    .then(list => dispatch(receiveList(list)))
+    .fail(err => dispatch(receiveListErrors(err.responseJSON)))
 }
 
 export const clearTask = taskId => dispatch => {
   return TaskAPIUtil.deleteTask(taskId)
-    .then(() => dispatch(deleteTask()))
+    .then(list => dispatch(receiveList(list)))
+    .fail(err => dispatch(receiveListErrors(err)))
 } //////
 

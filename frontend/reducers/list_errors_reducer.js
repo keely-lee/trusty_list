@@ -1,4 +1,6 @@
-import { RECEIVE_LISTS, RECEIVE_LIST, RECEIVE_LIST_ERRORS, CLEAR_LIST } from '../actions/list_actions'
+import { RECEIVE_LISTS, RECEIVE_LIST, RECEIVE_LIST_ERRORS, CLEAR_LIST } from '../actions/list_actions';
+import { CLOSE_MODAL } from '../actions/modal_actions';
+
 
 const listErrorsReducer = (oldState = [], action) => {
   Object.freeze(oldState);
@@ -11,6 +13,8 @@ const listErrorsReducer = (oldState = [], action) => {
     case RECEIVE_LISTS:
       return newState;
     case RECEIVE_LIST: 
+      return newState;
+    case CLOSE_MODAL:
       return newState;
     default:
       return oldState

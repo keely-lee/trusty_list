@@ -5,9 +5,8 @@ import { getList, updateList, deleteList } from '../actions/list_actions';
 import { createTask, updateTask, clearTask } from '../actions/task_actions';
 
 import TaskForm from './task_form';
-
 import { openModal } from '../actions/modal_actions';
-import Modal from './modal';
+// import Modal from './modal';
 
 function List(props) {
   const dispatch = useDispatch();
@@ -66,6 +65,8 @@ function List(props) {
           <button type="button" onClick={() => dispatch(openModal('task'))}>
             New Task
           </button> 
+
+
         </div>
 
       ) : "List Does Not Exist" }
