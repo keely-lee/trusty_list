@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../actions/session_actions';
 import { getLists, getList, createList, updateList, deleteList } from '../actions/list_actions';
+import { openModal } from '../actions/modal_actions';
 
 function UserHome(){
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ function UserHome(){
         <button onClick={() => dispatch(logout())}>LOGOUT</button>
       </nav>
 
-      <h1>LIST COMPONENT</h1>
+      <h1>Trust Your Lists</h1>
 
       <div className="user-wrapper">
         { listIds.length ? listIds.map(id => {
@@ -49,7 +50,7 @@ function UserHome(){
           )
         }) : null }
 
-        <div className="list-ele-new" onClick={() => dispatch(createList({name: "test ten route"}))}>
+        <div className="list-ele-new" onClick={() => dispatch(openModal("newList"))}>
           <p>New List</p>
         </div>
       </div>

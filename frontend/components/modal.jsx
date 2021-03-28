@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeModal } from '../actions/modal_actions';
 // import { createTask, updateTask, clearTask } from '../actions/task_actions';
 import TaskForm from './task_form';
+import { NewListModal } from './modal_components';
 
 function Modal({task}) {
   const dispatch = useDispatch();
@@ -14,6 +15,9 @@ function Modal({task}) {
   switch (modalState) {
     case "task":
       component = <TaskForm task={task}/>;
+      break;
+    case "newList":
+      component = <NewListModal/>
       break;
     default:
       component = null;

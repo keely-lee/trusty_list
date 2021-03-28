@@ -1,20 +1,33 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { login, signup } from '../actions/session_actions';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, signup, clearErrors } from '../actions/session_actions';
 
 function Session({sessionType}) {
 
   const dispatch = useDispatch();
+  const errors = useSelector(state => state.errors.session);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [type, setType] = useState(sessionType);
+
+  // useEffect(() => {
+  //   // effect
+  //   return () => {
+  //     dispatch(clearErrors);
+  //   }
+  // })
 
   function handleSubmit(e){
     e.preventDefault()
 
     if (type === 'signup') dispatch(signup({email: email, password: password}));
     else dispatch(login({email: email, password: password}));
+  }
+
+  function swap(){
+    setType(altButton.toLowerCase())
+    dispatch(clearErrors())
   }
 
   // session values
@@ -59,8 +72,14 @@ function Session({sessionType}) {
 
         {/* <div className="session-alt-div"> */}
           <span>{altButtonText}</span>
-          <button className="session-alt-button" onClick={() => setType(altButton.toLowerCase())}>{altButton}</button>
+          <button className="session-alt-button" onClick={swap}>{altButton}</button>
         {/* </div> */}
+
+        { errors.map((err, idx) => {
+          return (
+            <p className={`session-error-${idx}`} key={`err-${idx}`}>{err}</p>
+          )
+        }) }
       </div>
     </div>
   )

@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/session_api_util';
+import { clearList } from './list_actions';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
@@ -40,6 +41,7 @@ export const login = user => dispatch => {
 export const logout = () => dispatch => {
   return APIUtil.logoutUser()
     .then(() => dispatch(logoutUser()))
+    .then(() => dispatch(clearList()))
     .fail(err => dispatch(receiveErrors(err)))
 }
 

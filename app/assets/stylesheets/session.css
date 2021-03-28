@@ -72,3 +72,19 @@
 .session-alt-button:focus {
   outline: none;
 }
+
+
+
+/* errors */
+p[class*="session-error"] {
+  color: rgb(224,66,55);
+  margin-top: .3em;
+  overflow-wrap: normal;
+  max-width: fit-content;
+  font-size: .85em;
+}
+
+[class*="session-error"]:first-of-type {
+  padding-top: 1em;
+}
+
