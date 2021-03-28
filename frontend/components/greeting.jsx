@@ -7,9 +7,7 @@ function Greeting(){
   const loggedIn = useSelector(state => state.session.currentUserId)
   
   return (
-    <div>
-      { loggedIn ? <UserHome/> : <Session type="login"/> }
-    </div>
+    loggedIn ? <UserHome/> : <Session sessionType="login"/>
   )
 }
 

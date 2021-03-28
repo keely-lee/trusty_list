@@ -1,0 +1,15 @@
+
+
+
+.user-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+[class*="list-ele"] {
+  border: 1px solid gray;
+  border-radius: 4px;
+  width: 20%;
+  margin: 0 1em;
+  /* height: 3em; */
+}

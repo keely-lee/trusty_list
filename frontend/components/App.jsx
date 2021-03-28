@@ -9,7 +9,7 @@ import List from './list_home';
 
 const App = () => {
   return (
-    <div>
+    <div id="App">
       <Modal/>
       <Switch>
         <Route exact path="/" component={Greeting} />

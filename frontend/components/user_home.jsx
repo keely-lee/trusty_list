@@ -32,24 +32,26 @@ function UserHome(){
 
       <h1>LIST COMPONENT</h1>
 
-      { listIds.length ? listIds.map(id => {
-        return (
-          <div className={`list-ele-${id}`} key={`list-${id}`}>
-            <p>{lists[id].name}</p>
-            <ul>
-              { lists[id].tasks.map((task, idx) => {
-                return ( 
-                  <li key={idx}>{task.title}</li> 
-                )
-              }) }
-            </ul>
+      <div className="user-wrapper">
+        { listIds.length ? listIds.map(id => {
+          return (
+            <div className={`list-ele-${id}`} key={`list-${id}`}>
+              <p>{lists[id].name}</p>
+              <ul>
+                { lists[id].tasks.map((task, idx) => {
+                  return ( 
+                    <li key={idx}>{task.title}</li> 
+                  )
+                }) }
+              </ul>
 
-          </div>
-        )
-      }) : null }
+            </div>
+          )
+        }) : null }
 
-      <div className="list-ele-new" onClick={() => dispatch(createList({name: "test ten route"}))}>
-        <p>New List</p>
+        <div className="list-ele-new" onClick={() => dispatch(createList({name: "test ten route"}))}>
+          <p>New List</p>
+        </div>
       </div>
     </div>
   )
