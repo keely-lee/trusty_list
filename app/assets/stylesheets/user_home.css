@@ -5,21 +5,43 @@
   /* background-size: cover; */
 }
 
+.user-main > h1 {
+  text-align: right;
+  max-width: 88%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 .user-wrapper {
   display: flex;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 [class*="list-ele"] {
   border: 2px solid gray;
   border-radius: 4px;
   width: 20%;
-  margin: 0 1em;
+  margin: 1em 1em;
   background-color: whitesmoke;
-  /* height: 3em; */
+  height: 10em;
+  overflow-y: scroll;
 }
+
+[class*="list-ele"]:hover {
+  cursor: pointer;
+}
+
+
 
 .list-ele-new {
   opacity: .7;
+}
+
+.list-ele-new:hover {
+  opacity: 1;
 }

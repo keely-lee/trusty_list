@@ -77,7 +77,7 @@
 
 /* errors */
 p[class*="session-error"] {
-  color: rgb(224,66,55);
+  /* color: rgb(224,66,55); */
   margin-top: .3em;
   overflow-wrap: normal;
   max-width: fit-content;

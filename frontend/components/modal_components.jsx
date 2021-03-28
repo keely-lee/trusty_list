@@ -1,23 +1,34 @@
 import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
 import { createList } from '../actions/list_actions';
+import { closeModal } from '../actions/modal_actions';
 
 export const NewListModal = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const error = useSelector(state => state.errors.list);
   const [listName, updateListName] = useState("");
   
   function handleNewList(e) {
     e.preventDefault();
     dispatch(createList({name: listName}))
-      .then(res => history.push(`/lists/${Object.keys(res.list)[0]}`))
-      // .then(res => <Redirect to={`/lists/${res.list[Object.keys(res.list)[0]]}`}/>)
+      .then(res => {
+        dispatch(closeModal())
+        history.push(`/lists/${Object.keys(res.list)[0]}`)
+      })
   }
 
   return (
     <div className="new-list-modal-div">
+      { error.length ? error.map((err, idx) => {
+        return (
+          <p className={`list-error-${idx}`} key={`err-${idx}`}>{err}</p>
+        )
+      }) : null}
+      
       <form onSubmit={handleNewList}>
         <input type="text" 
         value={listName}
@@ -25,6 +36,7 @@ export const NewListModal = () => {
         placeholder="New List Name"/>
         <button>Create</button>
       </form>
+
     </div>
   )
 }

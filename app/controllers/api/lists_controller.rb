@@ -7,7 +7,7 @@ class Api::ListsController < ApplicationController
     if @lists
       render :index
     else
-      render json: {}
+      render json: []
     end
   end
   
