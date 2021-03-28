@@ -1,4 +1,9 @@
-
+.user-main {
+  background: url("user.jpg")  no-repeat center center;
+  width: 100vw;
+  height: 100vh;
+  /* background-size: cover; */
+}
 
 
 .user-wrapper {
@@ -7,9 +12,14 @@
 }
 
 [class*="list-ele"] {
-  border: 1px solid gray;
+  border: 2px solid gray;
   border-radius: 4px;
   width: 20%;
   margin: 0 1em;
+  background-color: whitesmoke;
   /* height: 3em; */
+}
+
+.list-ele-new {
+  opacity: .7;
 }
