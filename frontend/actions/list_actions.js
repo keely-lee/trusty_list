@@ -65,5 +65,6 @@ export const deleteList = listId => dispatch => {
       dispatch(clearList());
       dispatch(receiveLists(res));
     })
+    
     .fail(err => dispatch(receiveListErrors(err)))
 }
