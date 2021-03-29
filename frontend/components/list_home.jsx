@@ -15,6 +15,7 @@ function List(props) {
   const list = useSelector(state => state.entities.lists);
   const listErrors = useSelector(state => state.errors.list);
 
+  // const listObj = list[match.params.id] ? list[match.params.id] : null;
   const listObj = Object.keys(list).length === 1 ? list[Object.keys(list)[0]] : null;
   const [listName, updateListName] = listObj ? useState(listObj.name) : useState("");
 
@@ -23,10 +24,7 @@ function List(props) {
       .then(res => updateListName(Object.values(res.list)[0].name))
   }, [])
 
-  useEffect(() => {
-    console.log("IN THE LIST EFFECT")
-  }, [list])
-
+  // debugger
   function saveList(e){
     e.preventDefault();
 
@@ -41,12 +39,14 @@ function List(props) {
 
   function trashList() {
     if (confirm("Delete List?")) {
-      dispatch(deleteList(match.params.id));
+      dispatch(deleteList(match.params.id))
     } 
   }
 
   return (
     <div className="list-main">
+      { !list[match.params.id] ? <Redirect to="/"/> : null }
+
       <Link to="/">Return to Lists</Link>
 
       { listObj ? ( 
@@ -76,7 +76,7 @@ function List(props) {
           </div>
         </div>
 
-      ) : <Redirect to="/"/> }
+      ) : null }
       {/* Add redirect later if list does not exist */}
 
     </div>

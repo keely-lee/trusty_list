@@ -8,12 +8,24 @@ import { openModal } from '../actions/modal_actions';
 function UserHome(){
   const dispatch = useDispatch();
   const lists = useSelector(state => state.entities.lists);
-  const listIds = Object.keys(lists);
-  const [list, setList] = useState({});
+  // const listIds = Object.keys(lists);
+  // let listIds = !!Object.keys(lists) ? useState(Object.keys(lists)) : useState([]);
+  const [listIds, setListIds] = !!Object.keys(lists) ? useState(Object.keys(lists)) : useState([]);
+  // const [list, setList] = useState({});
+  console.log(lists)
+  console.log("listIds")
 
   useEffect(() => {
+    console.log("IN USER HOME")
     dispatch(getLists());
   }, []);
+
+  useEffect(() => {
+    // debugger
+    // listIds = Object.keys(lists);
+
+    setListIds(Object.keys(lists));
+  }, [lists])
 
   // function taskNames(arr) {
   //   if (arr.length <= 5) return arr.map(task => task.title);
@@ -24,6 +36,7 @@ function UserHome(){
   //   }
   // }
 
+
   return (
     <div className="user-main">
       <nav>
@@ -33,7 +46,10 @@ function UserHome(){
       <h1>Trust Your Lists</h1>
 
       <div className="user-wrapper">
-        { listIds.length ? listIds.map(id => {
+        { Object.keys(lists).length ? Object.keys(lists).map(id => {
+        // { listIds.length && Object.keys(lists).length === listIds.length ? listIds.map(id => {
+          // debugger
+        // { listIds.length ? listIds.map(id => {
           return (
             <Link to={`/lists/${id}`} key={`list-${id}`}>
               <div className={`list-ele-${id}`}>

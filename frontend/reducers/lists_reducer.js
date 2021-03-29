@@ -6,7 +6,8 @@ const ListsReducer = (oldState = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_LISTS:
-      newState = Object.assign({}, oldState, action.lists);
+      newState = action.lists;
+      // newState = Object.assign({}, oldState, action.lists);
       return newState;
     case RECEIVE_LIST:
       newState = action.list;

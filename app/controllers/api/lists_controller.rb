@@ -46,6 +46,7 @@ class Api::ListsController < ApplicationController
     if @list
       @list.destroy
       @lists = List.where(user_id: current_user.id)
+      # render json: @lists
       render "/api/lists/index.json.jbuilder"
     else
       render plain: 'List does not exist'
