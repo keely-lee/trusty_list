@@ -23,7 +23,23 @@
   margin-top: 3.5em;
   overflow-y: scroll;
 
-  border: 1px solid green;
+}
+
+#del-list-btn {
+  position: relative;
+  right: -40%;
+  border: none;
+  font-size: 1em;
+  background-color: transparent;
+  color: rgb(224,66,55);
+  opacity: .5;
+}
+
+#del-list-btn:hover {
+  font-size: 1.1em;
+  font-weight: 900;
+  margin-bottom: -.15em;
+  opacity: 1;
 }
 
 .list-name {
@@ -39,6 +55,24 @@
   outline: 0;
 }
 
+#new-task-btn {
+  position: absolute;
+  top: 1.5em;
+  left: 3em;
+  font-size: 2em;
+  height: 4em;
+  width: 9em;
+  transform: rotate(332deg)
+}
+
+#new-task-btn:focus {
+  outline: 0;
+}
+
+
+
+
+/* TASKS */
 .list-task-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -51,6 +85,7 @@
   width: 15em;
   height: 0;
   padding-bottom: 15em; 
+  overflow-y: scroll;
 }
 
 .task-form-div > form {
@@ -107,27 +142,46 @@
   justify-content: space-between;
 }
 
-.task-comments-list > div > div button {
+.task-comments-list > div > button {
   background-color: transparent;
   opacity: .6;
   border: none;
 
 }
 
-.task-comments-list > div > div button:hover {
+.task-comments-list > div > button:hover {
   opacity: 1;
   background-color: yellow;
 }
 
-#add-comment {
-  /* background-color: rgb(254, 247, 183); */
+
+
+.add-comment-input {
   background-color: transparent;
   opacity: .6;
   border: none;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  font-size: .9em;
 }
 
-#add-comment:hover {
-  /* background-color: transparent; */
+.add-comment-input:hover {
   opacity: 1;
   font-weight: bolder;
+}
+
+.task-save-del-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+
+
+
+/* TASK RELATED BUTTONS */
+.list-task-wrapper button {
+  background-color: transparent;
+  border: none;
 }

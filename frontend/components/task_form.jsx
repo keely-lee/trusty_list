@@ -129,7 +129,7 @@ function TaskForm({edit, listId}) { //need listID??
           })}
         </ul>
 
-        <div>
+        <div className="add-comment-input">
           <input type="text"
             placeholder="Add Comment"
             onChange={e => updateNewComment(e.currentTarget.value)}
@@ -139,9 +139,10 @@ function TaskForm({edit, listId}) { //need listID??
         </div>
 
         {/* <button id="add-comment" type="button" onClick={() => _newComment("")}>Add Comment</button> */}
-
-        { edit ? <button type="button" onClick={() => dispatch(clearTask(edit.id))}>Delete Task</button> : null }
-        <button>Save!</button>
+        <div className="task-save-del-buttons">
+          { edit ? <button type="button" onClick={() => dispatch(clearTask(edit.id))}>Delete Task</button> : null }
+          <button>Save!</button>
+        </div>
       </form>
 
     </div>

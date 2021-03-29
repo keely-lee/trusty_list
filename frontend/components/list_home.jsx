@@ -51,7 +51,7 @@ function List(props) {
 
       { listObj ? ( 
         <div className="list-main-wrapper">
-          <button type="button" onClick={trashList}>Delete List</button>
+          <button type="button" onClick={trashList} id="del-list-btn">Delete List</button>
           <form onSubmit={saveList}>
             <input type="text"
               value={listName}
@@ -70,7 +70,7 @@ function List(props) {
               )
             }) }
 
-            <button type="button" onClick={() => dispatch(openModal('task'))}>
+            <button type="button" id="new-task-btn" onClick={() => dispatch(openModal('task'))}>
               New Task
             </button> 
           </div>
