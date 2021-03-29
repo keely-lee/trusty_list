@@ -12,9 +12,8 @@ function UserHome(){
   const [list, setList] = useState({});
 
   useEffect(() => {
-    dispatch(getLists())
+    dispatch(getLists());
   }, []);
-
 
   // function taskNames(arr) {
   //   if (arr.length <= 5) return arr.map(task => task.title);

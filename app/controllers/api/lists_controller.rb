@@ -41,11 +41,12 @@ class Api::ListsController < ApplicationController
   end
 
   def destroy
-    @list = List.find_by(params[:id])
+    @list = List.find(params[:id])
 
     if @list
       @list.destroy
-      render "/api/show"
+      @lists = List.where(user_id: current_user.id)
+      render "/api/lists/index.json.jbuilder"
     else
       render plain: 'List does not exist'
     end

@@ -62,13 +62,72 @@
 .task-form-div > form > button:first-of-type {
   position: relative;
   width: 25px;
+  background-color: transparent;
+  line-height: 2ch;
+  margin: 5px;
+  border: 1px solid black;
+  padding: 1px;
 }
 
-.task-form-div input {
+.task-form-div span {
+  margin-left: 3px;
+}
+
+.task-form-div input, .task-form-div textarea {
   border: none;
   background-color: transparent;
+  border-bottom: .5px solid rgb(16, 15, 15);
+  font-size: 1em;
+  width: 75%
 }
 
-.task-form-div input:focus {
+.task-form-div input:focus, .task-form-div textarea:focus {
   outline: 0;
+  background-color: rgb(254, 247, 183);
+}
+
+.task-form-div textarea {
+  width: 91%;
+  margin-left: 7px;
+  font-size: .75em;
+  background-image: linear-gradient(transparent, transparent calc(3ch - 1px), rgb(157, 155, 155) 0px);
+  line-height: 3ch;
+  background-size: 100% 3ch;
+  margin-bottom: 7px;
+  border-bottom: none;
+}
+
+.task-comments-list {
+  width: 75%;
+  margin: 5px 0;
+}
+
+.task-comments-list > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-comments-list > div > div button {
+  background-color: transparent;
+  opacity: .6;
+  border: none;
+
+}
+
+.task-comments-list > div > div button:hover {
+  opacity: 1;
+  background-color: yellow;
+}
+
+#add-comment {
+  /* background-color: rgb(254, 247, 183); */
+  background-color: transparent;
+  opacity: .6;
+  border: none;
+}
+
+#add-comment:hover {
+  /* background-color: transparent; */
+  opacity: 1;
+  font-weight: bolder;
 }

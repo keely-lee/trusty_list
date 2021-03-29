@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, Redirect } from 'react-router-dom';
 import { getList, updateList, deleteList } from '../actions/list_actions';
 import { createTask, updateTask, clearTask } from '../actions/task_actions';
 
@@ -10,6 +10,7 @@ import { openModal } from '../actions/modal_actions';
 
 function List(props) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { match } = props;
   const list = useSelector(state => state.entities.lists);
   const listErrors = useSelector(state => state.errors.list);
@@ -22,12 +23,9 @@ function List(props) {
       .then(res => updateListName(Object.values(res.list)[0].name))
   }, [])
 
-  // useEffect(() => {
-  //   effect
-  //   return () => {
-  //     cleanup
-  //   }
-  // }, [input])
+  useEffect(() => {
+    console.log("IN THE LIST EFFECT")
+  }, [list])
 
   function saveList(e){
     e.preventDefault();
@@ -39,7 +37,7 @@ function List(props) {
   }
 
   function markComplete(task) {
-  }
+  } //eventually swap for checkbox / checkmark
 
   function trashList() {
     if (confirm("Delete List?")) {
@@ -50,10 +48,10 @@ function List(props) {
   return (
     <div className="list-main">
       <Link to="/">Return to Lists</Link>
-      <button type="button" onClick={trashList}>Delete List</button>
 
       { listObj ? ( 
         <div className="list-main-wrapper">
+          <button type="button" onClick={trashList}>Delete List</button>
           <form onSubmit={saveList}>
             <input type="text"
               value={listName}
@@ -78,7 +76,7 @@ function List(props) {
           </div>
         </div>
 
-      ) : "List Does Not Exist" }
+      ) : <Redirect to="/"/> }
       {/* Add redirect later if list does not exist */}
 
     </div>

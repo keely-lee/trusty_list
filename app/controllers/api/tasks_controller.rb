@@ -26,11 +26,16 @@ class Api::TasksController < ApplicationController
   end
 
   def update
+    # byebug
     @task = Task.find(params[:id])
+    # byebug
     list_id = @task.list_id #stay on current list even if list_id changes
+    # byebug
     if @task.update(task_params)
+      # byebug
       @list = List.find(list_id)
       # if @list ?? needed
+      # byebug
       render "/api/lists/show"
     else
       render json: @task.errors.full_messages, status: 422
@@ -50,7 +55,7 @@ class Api::TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:list_id, :title, :status, :description, :comments, :due_date)
+    params.require(:task).permit(:list_id, :title, :status, :description, :due_date, :comments => [])
   end
   
 end

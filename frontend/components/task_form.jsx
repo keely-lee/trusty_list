@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createTask, updateTask, clearTask } from '../actions/task_actions';
 import { closeModal } from '../actions/modal_actions';
@@ -8,12 +8,46 @@ function TaskForm({edit, listId}) { //need listID??
   const list = useSelector(state => state.entities.lists);
   // const errors = useSelector(state => state.errors.list);
 
-  const [title, updateTitle] = edit ? useState(edit.title) : useState("");
+  const [title, updateTitle] = !!edit ? useState(edit.title) : useState("");
   const [status, updateStatus] = edit ? useState(edit.status) : useState("I");
   const [description, updateDescription] = edit ? useState(edit.description) : useState("")
   const [comments, updateComments] = edit ? useState(edit.comments) : useState([]);
   // const [dueDate, updateDueDate] = useState(""); eventually get date calcs
 
+  useEffect(() => {
+    if (!!edit) {
+      updateTitle(edit.title)
+      updateStatus(edit.status)
+      updateDescription(edit.description)
+      updateComments(edit.comments)
+    }
+  }, [edit])
+
+  function _delComment(idx) {
+    if (idx === comments.length-1) {
+      updateComments(oldComments => {
+        oldComments.pop();
+        return [...oldComments];
+      })
+    } else {
+      updateComments(oldComments => {
+        oldComments[idx] = oldComments.pop();
+        return [...oldComments];
+      })
+    }
+
+  }
+
+  function _updateComment(idx) {
+
+  }
+
+  function _newComment(comment) {
+    updateComments(oldComments => {
+      oldComments.push(comment);
+      return [...oldComments];
+    })
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -28,9 +62,10 @@ function TaskForm({edit, listId}) { //need listID??
       comments: comments,
       list_id: listNum
     }
-    
+
     if (edit) {
       currTask['id'] = edit.id;
+
       dispatch(updateTask(currTask))
     } else {
       dispatch(createTask(currTask))
@@ -49,19 +84,26 @@ function TaskForm({edit, listId}) { //need listID??
           <span>Task: </span>
           <input onChange={e => updateTitle(e.currentTarget.value)} value={title} />
         </div>
-        <div>
-          <span>Description: </span>
-          <textarea onChange={e => updateDescription(e.currentTarget.value)} value={description} />
-        </div>
+        {/* <div> */}
+          {/* <span>Description: </span> */}
+          <textarea onChange={e => updateDescription(e.currentTarget.value)} value={description} placeholder="Description"/>
+        {/* </div> */}
 
-        <p>Comments: </p>
-        <ul>
+        <span>Comments: </span>
+        <ul className="task-comments-list">
           {comments.map((comment, idx) => {
             return (
-              <li key={`comment-${idx}`}>{comment}</li>
+              <div key={`comment-${idx}`}>
+                <li>{comment}</li>
+                <div>
+                  <button type="button">Edit</button>
+                  <button type="button" onClick={() => _delComment(idx)}>Del</button>
+                </div>
+              </div>
             )
           })}
         </ul>
+        <button id="add-comment" type="button" onClick={() => _newComment("")}>Add Comment</button>
         { edit ? <button type="button" onClick={() => dispatch(clearTask(edit.id))}>Delete Task</button> : null }
         <button>Save!</button>
       </form>
