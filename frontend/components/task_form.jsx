@@ -45,9 +45,16 @@ function TaskForm({edit, listId}) { //need listID??
           {status}
         </button>
 
-        <input onChange={e => updateTitle(e.currentTarget.value)} value={title} />
-        <input onChange={e => updateDescription(e.currentTarget.value)} value={description} />
+        <div>
+          <span>Task: </span>
+          <input onChange={e => updateTitle(e.currentTarget.value)} value={title} />
+        </div>
+        <div>
+          <span>Description: </span>
+          <textarea onChange={e => updateDescription(e.currentTarget.value)} value={description} />
+        </div>
 
+        <p>Comments: </p>
         <ul>
           {comments.map((comment, idx) => {
             return (

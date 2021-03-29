@@ -45,7 +45,7 @@ class Api::ListsController < ApplicationController
 
     if @list
       @list.destroy
-      redirect_to api_lists_url
+      render "/api/show"
     else
       render plain: 'List does not exist'
     end

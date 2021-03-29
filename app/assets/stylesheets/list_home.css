@@ -1,0 +1,74 @@
+.list-main {
+  background: url("list_home.jpg") no-repeat center center;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+}
+
+/* .list-main > a {
+  position: absolute;
+} */
+
+.list-main-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60vw;
+  height: 80vh;
+  margin-top: 3.5em;
+  overflow-y: scroll;
+
+  border: 1px solid green;
+}
+
+.list-name {
+  font-size: 1.7em;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid rgb(250, 238, 146);
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+
+.list-name:focus {
+  outline: 0;
+}
+
+.list-task-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.task-form-div {
+  border: 1px solid rgb(250, 238, 146);
+  background-color: rgb(254, 243, 153);
+  margin: 1em;
+  width: 15em;
+  height: 0;
+  padding-bottom: 15em; 
+}
+
+.task-form-div > form {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.task-form-div > form > button:first-of-type {
+  position: relative;
+  width: 25px;
+}
+
+.task-form-div input {
+  border: none;
+  background-color: transparent;
+}
+
+.task-form-div input:focus {
+  outline: 0;
+}
