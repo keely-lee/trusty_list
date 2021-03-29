@@ -22,6 +22,7 @@ function Session({sessionType}) {
     e.preventDefault()
 
     if (type === 'signup') dispatch(signup({email: email, password: password}));
+    else if (type === 'demo') dispatch(login({email: 'john_dill@gmail.com', password: 'password1'}));
     else dispatch(login({email: email, password: password}));
   }
 
@@ -67,6 +68,7 @@ function Session({sessionType}) {
             className={`${type}-session-email`}/>
 
           <button className="session-submit">{submitButton}</button>
+          <button className="session-alt-button" onClick={() => setType("demo")}>Demo User</button>
           {/* <button onClick={demoUser}>Demo User</button> */}
         </form>
 

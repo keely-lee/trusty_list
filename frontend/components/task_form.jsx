@@ -109,25 +109,21 @@ function TaskForm({edit, listId}) { //need listID??
             // )
 
 
-
             return (
-              <div key={`comment-${idx}`} onClick={() => toggleEditMode(idx)}>
+              <div key={`comment-${idx}`} 
+                onClick={() => toggleEditMode(idx)}
+                // onBlur={() => toggleEditMode(null)} 
+              >
+                
                 { editMode === idx ? (
-                  <div>
-                    <input type="text"
+                  <input type="text"
                     value={comment}
-                    onChange={(e) => _updateComment(e.currentTarget.value, idx)}
-                    />
-                  </div>
+                    onChange={(e) => _updateComment(e.currentTarget.value, idx)}/>
                 ) : (
-                  <div>
-                    <li>{comment}</li>
-                    <div>
-                      <button type="button" onClick={() => _updateComment(idx)}>Edit</button>
-                      <button type="button" onClick={() => _delComment(idx)}>Del</button>
-                    </div>
-                  </div>
+                  <li>{comment}</li>
                 )}
+
+                <button type="button" onClick={() => _delComment(idx)}>Del</button>
               </div>
             )
           })}

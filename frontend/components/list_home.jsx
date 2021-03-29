@@ -22,6 +22,7 @@ function List(props) {
   useEffect(() => {
     dispatch(getList(match.params.id))
       .then(res => updateListName(Object.values(res.list)[0].name))
+      .fail(() => history.push("/"))
   }, [])
 
   function saveList(e){

@@ -60,10 +60,10 @@ export const updateList = list => dispatch => {
 
 export const deleteList = listId => dispatch => {
   return ListAPIUtil.deleteList(listId)
-    .then((res) => dispatch(clearList()))
-    // .then((res) => {
-    //   dispatch(clearList());
-    //   dispatch(receiveLists(res));
-    // })
+    // .then((res) => dispatch(clearList()))
+    .then((res) => {
+      dispatch(clearList());
+      dispatch(receiveLists(res));
+    })
     .fail(err => dispatch(receiveListErrors(err)))
 }
