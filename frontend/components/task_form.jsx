@@ -12,6 +12,8 @@ function TaskForm({edit, listId}) { //need listID??
   const [status, updateStatus] = edit ? useState(edit.status) : useState("I");
   const [description, updateDescription] = edit ? useState(edit.description) : useState("")
   const [comments, updateComments] = edit ? useState(edit.comments) : useState([]);
+  const [newComment, updateNewComment] = useState(""); 
+  const [editMode, toggleEditMode] = useState(null);  //idx
   // const [dueDate, updateDueDate] = useState(""); eventually get date calcs
 
   useEffect(() => {
@@ -38,8 +40,11 @@ function TaskForm({edit, listId}) { //need listID??
 
   }
 
-  function _updateComment(idx) {
-
+  function _updateComment(comment, idx) {
+    updateComments(oldComments => {
+      oldComments[idx] = comment;
+      return [...oldComments]
+    })
   }
 
   function _newComment(comment) {
@@ -47,6 +52,7 @@ function TaskForm({edit, listId}) { //need listID??
       oldComments.push(comment);
       return [...oldComments];
     })
+    updateNewComment("");
   }
 
   function handleSubmit(e) {
@@ -92,21 +98,56 @@ function TaskForm({edit, listId}) { //need listID??
         <span>Comments: </span>
         <ul className="task-comments-list">
           {comments.map((comment, idx) => {
+            // return (
+            //   <div key={`comment-${idx}`}>
+            //     <li >{comment}</li>
+            //     <div>
+            //       <button type="button" onClick={() => _updateComment(idx)}>Edit</button>
+            //       <button type="button" onClick={() => _delComment(idx)}>Del</button>
+            //     </div>
+            //   </div>
+            // )
+
+
+
             return (
-              <div key={`comment-${idx}`}>
-                <li>{comment}</li>
-                <div>
-                  <button type="button">Edit</button>
-                  <button type="button" onClick={() => _delComment(idx)}>Del</button>
-                </div>
+              <div key={`comment-${idx}`} onClick={() => toggleEditMode(idx)}>
+                { editMode === idx ? (
+                  <div>
+                    <input type="text"
+                    value={comment}
+                    onChange={(e) => _updateComment(e.currentTarget.value, idx)}
+                    />
+                  </div>
+                ) : (
+                  <div>
+                    <li>{comment}</li>
+                    <div>
+                      <button type="button" onClick={() => _updateComment(idx)}>Edit</button>
+                      <button type="button" onClick={() => _delComment(idx)}>Del</button>
+                    </div>
+                  </div>
+                )}
               </div>
             )
           })}
         </ul>
-        <button id="add-comment" type="button" onClick={() => _newComment("")}>Add Comment</button>
+
+        <div>
+          <input type="text"
+            placeholder="Add Comment"
+            onChange={e => updateNewComment(e.currentTarget.value)}
+            value={newComment}
+          />
+          <button type="button" onClick={() => _newComment(newComment)}>Add</button>
+        </div>
+
+        {/* <button id="add-comment" type="button" onClick={() => _newComment("")}>Add Comment</button> */}
+
         { edit ? <button type="button" onClick={() => dispatch(clearTask(edit.id))}>Delete Task</button> : null }
         <button>Save!</button>
       </form>
+
     </div>
   )
 

@@ -24,7 +24,6 @@ function List(props) {
       .then(res => updateListName(Object.values(res.list)[0].name))
   }, [])
 
-  // debugger
   function saveList(e){
     e.preventDefault();
 
@@ -45,7 +44,7 @@ function List(props) {
 
   return (
     <div className="list-main">
-      { !list[match.params.id] ? <Redirect to="/"/> : null }
+      { !list[match.params.id] && Object.keys(list).length ? <Redirect to="/"/> : null }
 
       <Link to="/">Return to Lists</Link>
 
