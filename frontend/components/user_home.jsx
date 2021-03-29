@@ -8,22 +8,13 @@ import { openModal } from '../actions/modal_actions';
 function UserHome(){
   const dispatch = useDispatch();
   const lists = useSelector(state => state.entities.lists);
-  // const listIds = Object.keys(lists);
-  // let listIds = !!Object.keys(lists) ? useState(Object.keys(lists)) : useState([]);
   const [listIds, setListIds] = !!Object.keys(lists) ? useState(Object.keys(lists)) : useState([]);
-  // const [list, setList] = useState({});
-  console.log(lists)
-  console.log("listIds")
 
   useEffect(() => {
-    console.log("IN USER HOME")
     dispatch(getLists());
   }, []);
 
   useEffect(() => {
-    // debugger
-    // listIds = Object.keys(lists);
-
     setListIds(Object.keys(lists));
   }, [lists])
 
