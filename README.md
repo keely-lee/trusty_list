@@ -6,20 +6,23 @@ Are you forgetting your todos? Can't separate work tasks from personal tasks? If
 
 
 
-To get started, download/clone TrustyList to your local system and enter rails server to start. Navigate on your web browser to localhost:3000 and you should be ready to get started!
+To get started, download/clone TrustyList to your local system and enter:
+* <code>npm install<code>
+* <code>npm run build<code> 
+* <code>rails server<code>
+
+Navigate on your web browser to localhost:3000 and you should be ready to get started!
 
 Technologies Used: 
-  Rails: 5.2.4.5
-  PostgreSQL: 12.4
-  Node: 14.15.0
-  react: 17.0.2
-  react-redux: 7.2.3
-  webpack: 5.28.0
+- Rails: 5.2.4.5
+- PostgreSQL: 12.4
+- Node: 14.15.0
+- react: 17.0.2
+- react-redux: 7.2.3
+- webpack: 5.28.0
 
-  HTML5
-  JavaScript
-  Ruby
-  CSS
+- HTML5
+- JavaScript
+- Ruby
+- CSS
 
-
-* ...
