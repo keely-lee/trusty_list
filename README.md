@@ -7,9 +7,9 @@ Are you forgetting your todos? Can't separate work tasks from personal tasks? If
 
 
 To get started, download/clone TrustyList to your local system and enter:
-- <code>npm install<code>
-- <code>npm run build<code> 
-- <code>rails server<code>
+* <code>npm install</code>
+* <code>npm run build</code> 
+* <code>rails server</code>
 
 Navigate on your web browser to localhost:3000 and you should be ready to get started!
 
