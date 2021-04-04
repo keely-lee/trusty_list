@@ -5,6 +5,18 @@
   /* background-size: cover; */
 }
 
+.user-main-nav {
+  display: flex;
+  height: 10vh;
+  padding: 5px;
+}
+
+.user-main-nav button {
+  max-height: 2em;
+}
+
+
+
 .user-main > h1 {
   text-align: right;
   max-width: 88%;
@@ -65,4 +77,18 @@
 .user-wrapper a {
   text-decoration: none;
   color: black;
+}
+
+
+.no-display { display: none }
+.display { display: inherit }
+
+.self-links-user a {
+  color: rgb(250, 75, 16);
+  font-size: 1.5em;
+  padding: 5px;
+}
+
+.self-links-user a:hover {
+  color: rgb(34, 72, 96);
 }

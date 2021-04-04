@@ -9,6 +9,7 @@ function UserHome(){
   const dispatch = useDispatch();
   const lists = useSelector(state => state.entities.lists);
   const [listIds, setListIds] = !!Object.keys(lists) ? useState(Object.keys(lists)) : useState([]);
+  const [navDisplay, setNavDisplay] = useState("no-display");
 
   useEffect(() => {
     dispatch(getLists());
@@ -27,11 +28,26 @@ function UserHome(){
   //   }
   // }
 
+  function toggleNav() {
+    if (navDisplay === "no-display") setNavDisplay("display");
+    else setNavDisplay("no-display");
+  }
+
+
+
 
   return (
     <div className="user-main">
-      <nav>
-        <button onClick={() => dispatch(logout())}>LOGOUT</button>
+      <nav className="user-main-nav">
+        <button onClick={toggleNav}><i className="fas fa-bars"></i></button>
+        <div className={navDisplay}>
+          <div className="self-links-user">
+            <a href="https://www.linkedin.com/in/keely-lee1/" className="linkedin" target="_blank"><i className="fab fa-linkedin"></i></a>
+            <a href="https://github.com/keely-lee" className="github" target="_blank"><i className="fab fa-github"></i></a>
+            <a href="https://keely-lee.github.io/" className="personal" target="_blank"><i className="fas fa-user-circle"></i></a>
+          </div>
+          <button onClick={() => dispatch(logout())}>LOGOUT</button>
+        </div>
       </nav>
 
       <h1>Trust Your Lists</h1>

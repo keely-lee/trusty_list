@@ -53,7 +53,7 @@ function Session({sessionType}) {
     <div className="session-main">
       <div className="session-wrapper">
         <h4>We'll Keep It In Order, Trust Us. </h4>
-        <h1>TrustyList</h1>
+        <h1>TrustyList {<i className="far fa-clipboard"></i>}</h1>
         <form onSubmit={handleSubmit} className={`${type}-session-form`}>
           <p>Your Email</p>
           <input type="text" 
@@ -68,7 +68,7 @@ function Session({sessionType}) {
             className={`${type}-session-email`}/>
 
           <button className="session-submit">{submitButton}</button>
-          <button className="session-alt-button" onClick={() => setType("demo")}>Demo User</button>
+          <button className="session-alt-button demo-login" onClick={() => setType("demo")}>Demo User</button>
           {/* <button onClick={demoUser}>Demo User</button> */}
         </form>
 
@@ -82,6 +82,12 @@ function Session({sessionType}) {
             <p className={`session-error-${idx}`} key={`err-${idx}`}>{err}</p>
           )
         }) }
+
+        <div className="self-links-session">
+          <a href="https://www.linkedin.com/in/keely-lee1/" className="linkedin" target="_blank"><i className="fab fa-linkedin"></i></a>
+          <a href="https://github.com/keely-lee" className="github" target="_blank"><i className="fab fa-github"></i></a>
+          <a href="https://keely-lee.github.io/" className="personal" target="_blank"><i className="fas fa-user-circle"></i></a>
+        </div>
       </div>
     </div>
   )
