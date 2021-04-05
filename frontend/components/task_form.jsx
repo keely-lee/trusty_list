@@ -61,6 +61,8 @@ function TaskForm({edit, listId}) { //need listID??
     const listNum = listId ? listId : Object.keys(list)[0];
     // edit from list home vs new list modal. Prep for home page edit.
 
+    
+    
     const currTask = {
       title: title,
       status: status,
@@ -69,9 +71,9 @@ function TaskForm({edit, listId}) { //need listID??
       list_id: listNum
     }
 
+    
     if (edit) {
       currTask['id'] = edit.id;
-
       dispatch(updateTask(currTask))
     } else {
       dispatch(createTask(currTask))
