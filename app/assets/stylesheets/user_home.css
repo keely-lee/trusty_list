@@ -7,7 +7,7 @@
 
 .user-main-nav {
   display: flex;
-  height: 10vh;
+  height: 5vh;
   padding: 5px;
 }
 
@@ -15,6 +15,10 @@
   max-height: 2em;
 }
 
+.user-main-nav button:first-child {
+  background-color: white;
+  border: none;
+}
 
 
 .user-main > h1 {
@@ -81,14 +85,29 @@
 
 
 .no-display { display: none }
-.display { display: inherit }
+.display { 
+  display: inherit;
+  align-content: space-between;
+}
+
+.self-links-user {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 
 .self-links-user a {
   color: rgb(250, 75, 16);
   font-size: 1.5em;
   padding: 5px;
+  /* animation: slide-right 2s;
+  position: relative; */
 }
 
 .self-links-user a:hover {
   color: rgb(34, 72, 96);
 }
+
+/* @keyframes slide-right {
+  from {left: -50px;}
+  to {left: 0}
+} */

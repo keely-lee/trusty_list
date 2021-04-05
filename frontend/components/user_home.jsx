@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logout } from '../actions/session_actions';
+import { logout, receiveCurrentUser } from '../actions/session_actions';
 import { getLists, getList, updateList, deleteList } from '../actions/list_actions';
 import { openModal } from '../actions/modal_actions';
 
@@ -33,8 +33,12 @@ function UserHome(){
     else setNavDisplay("no-display");
   }
 
+  useEffect(() => {
+    if (navDisplay === "no-display") return;
 
-
+    const closeNav = setTimeout(() => setNavDisplay("no-display"), 60000);
+    return () => clearTimeout(closeNav);
+  }, [navDisplay])
 
   return (
     <div className="user-main">
