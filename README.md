@@ -13,13 +13,13 @@ To get started, download/clone TrustyList to your local system and enter:
 
 Navigate on your web browser to localhost:3000 and you should be ready to get started!
 
-<img src="./app/assests/images/readme_session.png" alt="homepage"/>
+<img src="./app/assets/images/readme_session.png" alt="homepage"/>
 
 Layout Scales for Mobile Viewing: 
 
-<img src="./app/assests/images/readme_user.png" alt="user_home"/>
+<img src="./app/assets/images/readme_user.png" alt="user_home"/>
 
-<img src="./app/assests/images/readme_list.png" alt="lists_home"/>
+<img src="./app/assets/images/readme_list.png" alt="lists_home"/>
 
 
 Technologies Used: 
