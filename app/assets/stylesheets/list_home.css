@@ -22,7 +22,20 @@
   height: 80vh;
   margin-top: 3.5em;
   overflow-y: scroll;
+}
 
+#lists-return {
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+  /* font-weight: bolder; */
+  display: flex;
+  align-items: center;
+}
+
+#lists-return span {
+  font-weight: 900;
+  padding-left: 2px;
 }
 
 #del-list-btn {
@@ -65,6 +78,10 @@
   transform: rotate(332deg)
 }
 
+#new-task-btn:hover {
+  font-weight: 900;
+}
+
 #new-task-btn:focus {
   outline: 0;
 }
@@ -83,8 +100,9 @@
   background-color: rgb(254, 243, 153);
   margin: 1em;
   width: 15em;
-  height: 0;
-  padding-bottom: 15em; 
+  height: 15em;
+  /* height: 0;
+  padding-bottom: 15em;  */
   overflow-y: scroll;
 }
 

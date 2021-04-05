@@ -87,7 +87,7 @@
 .no-display { display: none }
 .display { 
   display: inherit;
-  align-content: space-between;
+  align-items: center;
 }
 
 .self-links-user {
