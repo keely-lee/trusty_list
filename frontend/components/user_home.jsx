@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logout } from '../actions/session_actions';
+import { logout, receiveCurrentUser } from '../actions/session_actions';
 import { getLists, getList, updateList, deleteList } from '../actions/list_actions';
 import { openModal } from '../actions/modal_actions';
 
@@ -9,6 +9,7 @@ function UserHome(){
   const dispatch = useDispatch();
   const lists = useSelector(state => state.entities.lists);
   const [listIds, setListIds] = !!Object.keys(lists) ? useState(Object.keys(lists)) : useState([]);
+  const [navDisplay, setNavDisplay] = useState("no-display");
 
   useEffect(() => {
     dispatch(getLists());
@@ -27,11 +28,30 @@ function UserHome(){
   //   }
   // }
 
+  function toggleNav() {
+    if (navDisplay === "no-display") setNavDisplay("display");
+    else setNavDisplay("no-display");
+  }
+
+  useEffect(() => {
+    if (navDisplay === "no-display") return;
+
+    const closeNav = setTimeout(() => setNavDisplay("no-display"), 60000);
+    return () => clearTimeout(closeNav);
+  }, [navDisplay])
 
   return (
     <div className="user-main">
-      <nav>
-        <button onClick={() => dispatch(logout())}>LOGOUT</button>
+      <nav className="user-main-nav">
+        <button onClick={toggleNav}><i className="fas fa-bars"></i></button>
+        <div className={navDisplay}>
+          <div className="self-links-user">
+            <a href="https://www.linkedin.com/in/keely-lee1/" className="linkedin" target="_blank"><i className="fab fa-linkedin"></i></a>
+            <a href="https://github.com/keely-lee" className="github" target="_blank"><i className="fab fa-github"></i></a>
+            <a href="https://keely-lee.github.io/" className="personal" target="_blank"><i className="fas fa-user-circle"></i></a>
+          </div>
+          <button onClick={() => dispatch(logout())}>LOGOUT</button>
+        </div>
       </nav>
 
       <h1>Trust Your Lists</h1>

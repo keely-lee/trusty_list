@@ -28,11 +28,13 @@ class Api::TasksController < ApplicationController
   def update
     # byebug
     @task = Task.find(params[:id])
-    # byebug
     list_id = @task.list_id #stay on current list even if list_id changes
     # byebug
+
     if @task.update(task_params)
-      # byebug
+      @task.update(comments: []) unless task_params['comments']
+
+
       @list = List.find(list_id)
       # if @list ?? needed
       # byebug
@@ -55,7 +57,7 @@ class Api::TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:list_id, :title, :status, :description, :due_date, :comments => [])
+    params.require(:task).permit(:list_id, :title, :status, :description, :due_date, :comments, comments: [])
   end
   
 end

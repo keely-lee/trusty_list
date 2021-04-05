@@ -47,7 +47,7 @@ function List(props) {
     <div className="list-main">
       { !list[match.params.id] && Object.keys(list).length ? <Redirect to="/"/> : null }
 
-      <Link to="/">Return to Lists</Link>
+      <Link to="/" id="lists-return"><i className="fas fa-angle-double-left"></i> <span>Lists</span></Link>
 
       { listObj ? ( 
         <div className="list-main-wrapper">
@@ -60,7 +60,7 @@ function List(props) {
             />
 
             <button>Save</button>
-            {/* FIGURE OUT HOW TO TRIGGER SAVE FOR ALL (NOT INDIVIDUAL TAKSS LATER - CAUSING CONFUSION) */}
+            {/* TRIGGER SAVE FOR ALL (NOT INDIVIDUAL TAKSS LATER - CAUSING CONFUSION) */}
           </form>
 
           <div className="list-task-wrapper">
